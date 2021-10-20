@@ -58,7 +58,7 @@ public:
 
                 for (size_t index = 1ul; index < parentRestrictions.size(); index++) {
                     const auto attributes = parentRestrictions[index]->get()->sharedValue->attributes;
-                    for (const auto attributeWeakPtr : attributes) {
+                    for (const auto& attributeWeakPtr : attributes) {
                         auto attribute = attributeWeakPtr.lock();
                         if (attribute == nullptr) {
                             continue;

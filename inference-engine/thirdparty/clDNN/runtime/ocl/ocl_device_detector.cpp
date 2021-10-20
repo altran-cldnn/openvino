@@ -23,8 +23,10 @@
 namespace {
 bool does_device_match_config(bool out_of_order, const cl::Device& device) {
 // Is it intel gpu
-if (device.getInfo<CL_DEVICE_TYPE>() != CL_DEVICE_TYPE_GPU ||
-    device.getInfo<CL_DEVICE_VENDOR_ID>() != 0x8086) {
+//if (device.getInfo<CL_DEVICE_TYPE>() != CL_DEVICE_TYPE_GPU ||
+//    device.getInfo<CL_DEVICE_VENDOR_ID>() != 0x8086) {
+if (device.getInfo<CL_DEVICE_TYPE>() != CL_DEVICE_TYPE_CPU ||
+    device.getInfo<CL_DEVICE_VENDOR_ID>() != 4130) {
     return false;
 }
 
@@ -43,7 +45,8 @@ return true;
 }  // namespace
 namespace cldnn {
 namespace ocl {
-static constexpr auto INTEL_PLATFORM_VENDOR = "Intel(R) Corporation";
+//static constexpr auto INTEL_PLATFORM_VENDOR = "Intel(R) Corporation";
+static constexpr auto INTEL_PLATFORM_VENDOR = "The pocl project";
 #ifdef _WIN32
 static constexpr auto INTEL_D3D11_SHARING_EXT_NAME = "cl_khr_d3d11_sharing";
 #endif // _WIN32
